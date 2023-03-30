@@ -1,0 +1,24 @@
+Goal of the project:
+
+The present script have the purpose to provide charts of different countries in which Spotify is available, 
+showing in a pie-shape style the distribution of the most streamed genres for every country. In order to do so, we call on Spotify API.
+
+
+Brief explication of every script:
+
+1.api_token: necessary to get the different requests we will make to Spotify API. It relies on a json called 'secret_variables.json' that must be created. It provides two keys,
+stored as a list: [client_id, client_secret]. You can get this two numbers creating an Spotify account and going to https://developer.spotify.com/dashboard/applications.
+
+2.countries_by_population: through web-scraping, we get some important information about the countries of the world. It is their ISO-2 and ISO-3 codes, population and names.
+
+3.dict_country_tracks: we find out which are the 50 most populated countries among the ones which have Spotify available. The population prerequisite is taken in order to
+select only countries in which is very probable, and in fact we finally see it is true, that they have 50 top Spotify playlist. The ocurrence of certain sentence in the playlist
+is necessary to assure we are retrieving the right one.
+
+4.dict_country_artist: because of the absence of genre tags on many of the tracks requested (due to recent released), we instead track the artists associated to those tracks.
+
+5.genres and detailed_information_by_country: once we got the different artists, we retrieve the differents genres of every artist which took part in any track.  Some amendments are
+made in order to avoid overrepresentation among other problems.
+
+6. data_as_pandas and final_result: the following function is built: given the name of a country, a donut chart will appear in which every genre of this country's top 50 playlist 
+is proportionally displayed according to the data we alredy have.
